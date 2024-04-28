@@ -1,0 +1,6 @@
+nodes:
+  hosts:
+    managed-node:
+      ansible_host: 10.0.0.4
+      ansible_user: vboxuser
+      ansible_ssh_private_key_file: /home/vboxuser/ansible/ssh-keys/ansible-key.pub
