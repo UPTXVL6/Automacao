@@ -3,8 +3,8 @@ azure:
     SRV-Linux-Web:
       ansible_host: 10.0.0.4
       ansible_user: vboxuser
-      ansible_ssh_private_key_file: /home/vboxuser/ansible/ssh-keys/ansible-key.pub
+      ansible_ssh_private_key_file: /home/vboxuser/ansible/ssh-keys/ansible-key
     SRV-Linux-Databse:
       ansible_host: 10.0.0.132
       ansible_user: vboxuser
-      ansible_ssh_private_key_file: /home/vboxuser/ansible/ssh-keys/ansible-key.pub
+      ansible_ssh_private_key_file: /home/vboxuser/ansible/ssh-keys/ansible-key
