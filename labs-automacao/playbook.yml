@@ -1,0 +1,5 @@
+- name: Running Apache
+  hosts: azure-web
+  become: true
+  roles:
+    - role: Apache
