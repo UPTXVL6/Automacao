@@ -31,4 +31,10 @@
     - ::1
     - localhost
 
+- name: Debug MySQL root password
+  debug:
+    msg: "MySQL root password is {{ mysql_root_password }}"
+
+
+
   
