@@ -1,0 +1,10 @@
+---
+# tasks file for PHP
+- name: Install PHP
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - php
+    - libapache2-mod-php  # PHP module for Apache
+  notify: restart apache

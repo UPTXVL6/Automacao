@@ -3,3 +3,9 @@
   become: true
   roles:
     - role: Apache
+
+- name: Run PHP
+  hosts: azure-web
+  become: true
+  roles:
+    - role: PHP
