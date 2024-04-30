@@ -16,7 +16,7 @@
     state: started
     enabled: yes
 
-- name: Update MySQL root password for all root accounts
+- name: update mysql root users
   mysql_user:
     name: root
     host: "{{ item }}"
