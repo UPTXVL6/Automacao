@@ -11,7 +11,7 @@
 
 - name: Copy index.html
   ansible.builtin.copy:
-    src: ~/ansible-labs/Automacao/labs-automacao/roles/Apache/files/index.html
+    src: /home/vboxuser/ansible-labs/Automacao/labs-automacao/roles/Apache/files/index.html
     dest: /var/www/html/index.html
 
 
