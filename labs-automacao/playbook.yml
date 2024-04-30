@@ -9,3 +9,9 @@
   become: true
   roles:
     - role: PHP
+
+- name: Install mysql
+  hosts: azure-database
+  become: true
+  roles:
+    - role: mysql

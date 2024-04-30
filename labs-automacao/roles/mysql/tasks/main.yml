@@ -1,0 +1,28 @@
+---
+# tasks file for mysql
+- name: Install MySQL
+  apt:
+    name: mysql
+    update_cache: yes
+    cache_valid_time: 3600
+    state: present
+
+- name: Start up the MySQL service
+  shell: "service mysql start"
+
+- name: Ensure MySQL is enabled to run on startup
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+
+- name: Update MySQL root password for all root accounts
+  mysql_user:
+    name: ansible
+    host: "{{ item }}"
+    password: "{{ mysql_root_password }}"
+    login_user: ansible
+    login_password: "{{ mysql_root_password }}"
+    check_implicit_admin: yes
+    priv: "*.*:ALL,GRANT"
+  
