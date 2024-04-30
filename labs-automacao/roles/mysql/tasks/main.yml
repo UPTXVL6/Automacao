@@ -2,7 +2,7 @@
 # tasks file for mysql
 - name: Install MySQL
   apt:
-    name: MySQL
+    name: mysql-server
     update_cache: yes
     cache_valid_time: 3600
     state: present
