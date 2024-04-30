@@ -1,4 +1,4 @@
 ---
 # vars file for mysql
-vars:   
-  mysql_root_password: "Brasil!12345"
+- vars:   
+    mysql_root_password: "Brasil!12345"
