@@ -7,4 +7,21 @@
   loop:
     - php
     - libapache2-mod-php  # PHP module for Apache
+- name: Install PHP dependencies
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - php 
+    - php-bcmath 
+    - php-curl 
+    - php-imagick 
+    - php-intl 
+    - php-json 
+    - php-mbstring 
+    - php-mysql 
+    - php-xml 
+    - php-zip
+  
+  
   notify: restart apache
