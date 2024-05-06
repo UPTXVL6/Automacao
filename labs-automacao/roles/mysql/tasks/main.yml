@@ -36,6 +36,7 @@
   community.mysql.mysql_user:
     name: "{{ db_user }}"
     password: "{{ db_password }}"
+    host_all: true
     priv: "{{ db_name }}.*:ALL"
     login_user: root
     login_password: "{{ mysql_root_password }}"
