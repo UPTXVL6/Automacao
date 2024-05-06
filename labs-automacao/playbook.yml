@@ -42,5 +42,6 @@
 
 - name: Install MySQL Workbench on Windows Client
   hosts: azure-client
+  become: true
   roles:
     - role: MySQLWorkbench
