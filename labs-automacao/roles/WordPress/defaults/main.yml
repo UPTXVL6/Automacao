@@ -1,2 +1,4 @@
 ---
 # defaults file for WordPress
+wp_install_dir: '/var/www/html'
+db_host: 10.0.0.132
