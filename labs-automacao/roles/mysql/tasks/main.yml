@@ -1,5 +1,6 @@
 ---
 # tasks file for mysql
+# Ref: https://docs.ansible.com/ansible/latest/collections/community/mysql/mysql_user_module.html
 - name: Update apt cache
   apt:
     update_cache: yes
@@ -13,9 +14,7 @@
     - python3-mysqldb
 
 - name: Secure MySQL installation
-  mysql_user:
-    login_user: root
-    login_password: ""
+  community.mysql.mysql_user:
     name: root
     password: "{{ mysql_root_password }}"
     host: localhost
@@ -29,11 +28,9 @@
     login_password: "{{ mysql_root_password }}"
 
 - name: Create a MySQL user
-  mysql_user:
+  community.mysql.mysql_user:
     name: "{{ db_user }}"
     password: "{{ db_password }}"
     priv: "{{ db_name }}.*:ALL"
     state: present
-    login_user: root
-    login_password: "{{ mysql_root_password }}"
 
