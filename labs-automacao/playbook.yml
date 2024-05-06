@@ -21,4 +21,21 @@
   become: true
   roles:
     - role: WordPress
-  
+
+- name: Create users
+  hosts: azure-web, azure-database
+  become: true
+  roles:
+    - role: UserManager
+
+- name: Create groups
+  hosts: azure-web, azure-database
+  become: true
+  roles:
+    - role: UserManager
+
+- name: Assign users to groups
+  hosts: azure-web, azure-database
+  become: true
+  roles:
+    - role: UserManager

@@ -1,9 +1,15 @@
 ---
 # tasks file for WordPress
-- name: "Wordpress | Remove index.html from www folder if exists"
+- name: Wordpress | Check if WordPress is installed
+  stat:
+    path: "{{ wp_install_dir }}"
+  register: wordpress_dir
+
+- name: Wordpress | Remove WordPress if it is installed
   file:
-    path: /var/www/html/index.html
+    path: "{{ wp_install_dir }}"
     state: absent
+  when: wordpress_dir.stat.exists
 
 - name: "Wordpress | Create app server folder"
   file:
@@ -12,12 +18,6 @@
     mode: 0755
 
 - name: "Wordpress | Extract install file"
-  unarchive:
-    src: "http://wordpress.org/wordpress-6.5.2.tar.gz"
-    dest: "{{ wp_install_dir }}"
-    remote_src: yes
-
-- name: Wordpress | Extract archive in {{ wp_install_dir }}
   unarchive:
     src: "http://wordpress.org/wordpress-6.5.2.tar.gz"
     dest: "{{ wp_install_dir }}"
