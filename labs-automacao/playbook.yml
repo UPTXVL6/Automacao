@@ -18,7 +18,6 @@
 
 - name: Install Wordpress
   hosts: azure-web
-  become: true
   roles:
     - role: WordPress
 
