@@ -1,9 +1,11 @@
 ---
 # tasks file for mysql
 # Ref: https://docs.ansible.com/ansible/latest/collections/community/mysql/mysql_user_module.html
+
 - name: Update apt cache
   apt:
     update_cache: yes
+    cache_valid_time: 3600
 
 - name: Install MySQL packages
   apt:
@@ -20,7 +22,7 @@
     password: "{{ mysql_root_password }}"
     check_implicit_admin: true
     login_user: root
-    login_password: ""
+    login_password: "{{ mysql_root_password }}"
     state: present
 
 - name: Create a MySQL database
