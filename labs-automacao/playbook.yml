@@ -20,5 +20,5 @@
   hosts: azure-web
   become: true
   roles:
-    - role: Wordpress
+    - role: WordPress
   
