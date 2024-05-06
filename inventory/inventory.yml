@@ -12,6 +12,8 @@ nodes:
     azure-client:
       ansible_host: 10.0.0.196
       ansible_user: vboxuser
+      ansible_connection: winrm
+      ansible_winrm_server_cert_validation: ignore
       ansible_password: Brasil12345!
 
   
