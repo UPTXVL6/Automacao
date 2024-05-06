@@ -25,7 +25,7 @@
     login_password: "{{ mysql_root_password }}"
     state: present
 
-- name: Create a MySQL database
+- name: Create a MySQL database 
   mysql_db:
     name: "{{ db_name }}"
     login_user: root
@@ -41,7 +41,7 @@
     login_user: root
     login_password: "{{ mysql_root_password }}"
     state: present
-    
+
 - name: Change bind-address to all
   lineinfile:
     path: /etc/mysql/mysql.conf.d/mysqld.cnf
