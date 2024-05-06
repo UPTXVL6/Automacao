@@ -1,0 +1,35 @@
+---
+server_groups:
+  - name: 'dev'
+    state: 'present'
+  - name: 'dba'
+    state: 'present'
+
+user_groups:
+  - user: 'dbdev'
+    group: 'dev'
+    state: 'present'
+    append: true
+  - user: 'developer'
+    group: 'dev'
+    state: 'present'
+    append: true
+  - user: 'dbadmin'
+    group: 'dba'
+    state: 'present'
+    append: true
+  - user: 'dbdev'
+    group: 'dba'
+    state: 'present'
+    append: true
+
+users_password:
+  - user: 'dbdev'
+    password: '123456'
+    state: 'present'
+  - user: 'developer'
+    password: '123456'
+    state: 'present'
+  - user: 'dbadmin'
+    password: '123456'
+    state: 'present'

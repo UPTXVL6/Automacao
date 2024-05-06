@@ -1,0 +1,22 @@
+---
+- name: Create group
+  group:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items: "{{ server_groups }}"
+  when: item.state == 'present'
+
+- name: Add user to group
+  user:
+    name: "{{ item.user }}"
+    groups: "{{ item.group }}"
+    append: "{{ item.append }}"
+  with_items: "{{ user_groups }}"
+  when: item.state == 'present'
+
+- name: Set password for user
+  user:
+    name: "{{ item.user }}"
+    password: "{{ item.password | password_hash('sha512') }}"
+  with_items: "{{ users_password }}"
+  when: item.state == 'present' and item.password is defined
