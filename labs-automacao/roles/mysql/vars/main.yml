@@ -1,6 +1,4 @@
-
-vars:   
-  mysql_root_password: "Upskills_1234"
-  db_name: "mysql_neu_prod"
-  db_user: "ansible"
-  db_password: "Automacao_1234" 
+mysql_root_password: "Upskills_1234"
+db_name: "mysql_neu_prod"
+db_user: "ansible"
+db_password: "Automacao_1234" 
