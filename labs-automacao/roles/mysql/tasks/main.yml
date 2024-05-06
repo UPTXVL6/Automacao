@@ -16,18 +16,19 @@
 - name: Secure MySQL installation
   community.mysql.mysql_user:
     name: root
-    password: "{{ mysql_root_password }}"
     host: localhost
-    state: present
+    password: "{{ mysql_root_password }}"
+    check_implicit_admin: true
     login_user: root
     login_password: ""
+    state: present
 
 - name: Create a MySQL database
   community.mysql.mysql_db:
     name: "{{ db_name }}"
-    state: present
     login_user: root
     login_password: "{{ mysql_root_password }}"
+    state: present
 
 - name: Create a MySQL user
   community.mysql.mysql_user:
