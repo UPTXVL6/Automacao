@@ -26,19 +26,26 @@
     state: present
 
 - name: Create a MySQL database
-  community.mysql.mysql_db:
+  mysql_db:
     name: "{{ db_name }}"
     login_user: root
     login_password: "{{ mysql_root_password }}"
     state: present
 
 - name: Create a MySQL user
-  community.mysql.mysql_user:
+  mysql_user:
     name: "{{ db_user }}"
     password: "{{ db_password }}"
-    host_all: true
     priv: "{{ db_name }}.*:ALL"
+    host: "%"
     login_user: root
     login_password: "{{ mysql_root_password }}"
     state: present
-
+    
+- name: Change bind-address to all
+  lineinfile:
+    path: /etc/mysql/mysql.conf.d/mysqld.cnf
+    regexp: '^bind-address'
+    line: '#bind-address = 127.0.0.1'
+    state: present
+  notify: restart mysql
