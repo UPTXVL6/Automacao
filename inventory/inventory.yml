@@ -8,4 +8,10 @@ nodes:
       ansible_host: 10.0.0.132
       ansible_user: vboxuser
       ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
+    # windows client
+    azure-client:
+      ansible_host: 10.0.0.196
+      ansible_user: vboxuser
+      ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
+
   

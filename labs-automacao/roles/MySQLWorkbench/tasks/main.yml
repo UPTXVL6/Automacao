@@ -1,0 +1,10 @@
+---
+- name: Download MySQL Workbench installer
+  win_get_url:
+    url: https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.36-winx64.msi
+    dest: C:\temp\mysql-installer.msi
+
+- name: Install MySQL Workbench
+  win_package:
+    path: C:\temp\mysql-installer.msi
+    arguments: '/quiet /norestart'

@@ -39,3 +39,8 @@
   become: true
   roles:
     - role: UserManager
+
+- name: Install MySQL Workbench on Windows Client
+  hosts: azure-client
+  roles:
+    - role: MySQLWorkbench
