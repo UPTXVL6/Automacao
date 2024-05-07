@@ -1,10 +1,6 @@
 ---
-- name: Download MySQL Workbench installer
-  copy:
-    src: "{{ playbook_dir }}/files/mysql-workbench-community-8.0.36-winx64.msi"
-    dest: C:\temp\mysql-installer.msi
-
 - name: Install MySQL Workbench
-  win_package:
-    path: C:\temp\mysql-installer.msi
-    arguments: '/quiet /norestart'
+  win_chocolatey:
+    name: mysql.workbench
+    version: '8.0.36'
+    state: present
