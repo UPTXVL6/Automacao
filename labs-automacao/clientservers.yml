@@ -1,0 +1,4 @@
+---
+- hosts: clientservers
+  roles:
+    - role: MySQLWorkbench

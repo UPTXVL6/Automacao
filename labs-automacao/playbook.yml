@@ -1,46 +1,5 @@
-- name: Running Apache
-  hosts: azure-web
-  become: true
-  roles:
-    - role: Apache
-
-- name: Run PHP
-  hosts: azure-web
-  become: true
-  roles:
-    - role: PHP
-
-- name: Install mysql
-  hosts: azure-database
-  become: true
-  roles:
-    - role: mysql
-
-- name: Install Wordpress
-  hosts: azure-web
-  become: true
-  roles:
-    - role: WordPress
-
-- name: Create users
-  hosts: azure-web, azure-database
-  become: true
-  roles:
-    - role: UserManager
-
-- name: Create groups
-  hosts: azure-web, azure-database
-  become: true
-  roles:
-    - role: UserManager
-
-- name: Assign users to groups
-  hosts: azure-web, azure-database
-  become: true
-  roles:
-    - role: UserManager
-
-- name: Install MySQL Workbench on Windows Client
-  hosts: azure-client
-  roles:
-    - role: MySQLWorkbench
+---
+- import_playbook: clientservers.yml
+- import_playbook: webservers.yml
+- import_playbook: dbservers.yml
+  

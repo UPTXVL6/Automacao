@@ -1,7 +1,3 @@
 ---
 # vars file for WordPress
-db_host: "10.0.0.132:3306"
-db_name: "mysql_neu_prod"
-db_user: "ansible"
-db_password: "Automacao_1234"
-wp_install_dir: '/var/www/html'
+wp_install_dir: "/var/www/html"

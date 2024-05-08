@@ -1,19 +1,94 @@
-nodes:
+web-disaster:
   hosts:
-    azure-web:
+    serverD1:
+      ansible_host: <IP>
+      ansible_user: vboxuser
+      ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
+    vars:
+      db_host: <IP>
+      db_name: "mysql_neu_prod"
+      db_user: "ansible"
+      db_password: "Automacao_1234"
+
+web-production:
+  hosts:
+    serverP1:
       ansible_host: 10.0.0.4
       ansible_user: vboxuser
       ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
-    azure-database:
+    vars:
+      db_host: "10.0.0.4"
+      db_name: "mysql_neu_prod"
+      db_user: "ansible"
+      db_password: "Automacao_1234"
+
+webservers:
+  children:
+    web-disaster:
+    web-production:
+
+database-disaster:
+  hosts:
+    serverD2:
+      ansible_host: <IP>
+      ansible_user: vboxuser
+      ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
+
+database-production:
+  hosts:
+    serverP2:
       ansible_host: 10.0.0.132
       ansible_user: vboxuser
       ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
-    # windows client
-    azure-client:
+
+dbservers:
+  children:
+    database-disaster:
+    database-production:
+
+client-disaster:
+  hosts:
+    serverD3:
+      ansible_host: <IP>
+      ansible_user: vboxuser
+      ansible_connection: winrm
+      ansible_winrm_server_cert_validation: ignore
+      ansible_password: Brasil12345!
+
+client-production:
+  hosts:
+    serverP3:
       ansible_host: 10.0.0.196
       ansible_user: vboxuser
       ansible_connection: winrm
       ansible_winrm_server_cert_validation: ignore
       ansible_password: Brasil12345!
 
-  
+clientservers:
+  children:
+    client-disaster:
+    client-production:
+
+production:
+  children:
+    web-production:
+    database-production:
+    client-production:
+
+disaster:
+  children:
+    web-disaster:
+    database-disaster:
+    client-disaster:
+
+linux:
+  children:
+    web-disaster:
+    web-production:
+    database-disaster:
+    database-production:
+
+windows:
+  children:
+    client-disaster:
+    client-production:
