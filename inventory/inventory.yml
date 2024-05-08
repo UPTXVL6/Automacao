@@ -4,11 +4,11 @@ web-disaster:
       ansible_host: <IP>
       ansible_user: vboxuser
       ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
-    vars:
-      db_host: <IP>
-      db_name: "mysql_neu_prod"
-      db_user: "ansible"
-      db_password: "Automacao_1234"
+  vars:
+    db_host: <IP>
+    db_name: "mysql_neu_prod"
+    db_user: "ansible"
+    db_password: "Automacao_1234"
 
 web-production:
   hosts:
@@ -16,11 +16,11 @@ web-production:
       ansible_host: 10.0.0.4
       ansible_user: vboxuser
       ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
-    vars:
-      db_host: "10.0.0.4"
-      db_name: "mysql_neu_prod"
-      db_user: "ansible"
-      db_password: "Automacao_1234"
+  vars:
+    db_host: "10.0.0.4"
+    db_name: "mysql_neu_prod"
+    db_user: "ansible"
+    db_password: "Automacao_1234"
 
 webservers:
   children:
