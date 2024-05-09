@@ -1,11 +1,11 @@
 web-disaster:
   hosts:
     serverD1:
-      ansible_host: <IP>
+      ansible_host: 10.0.0.4
       ansible_user: vboxuser
       ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
   vars:
-    db_host: <IP>
+    db_host: "10.0.0.132:3306"
     db_name: "mysql_neu_prod"
     db_user: "ansible"
     db_password: "Automacao_1234"
@@ -30,7 +30,7 @@ webservers:
 database-disaster:
   hosts:
     serverD2:
-      ansible_host: <IP>
+      ansible_host: 10.0.0.132
       ansible_user: vboxuser
       ansible_ssh_private_key_file: /home/vboxuser/ansible-labs/ssh-keys/ansible-key
   vars:
@@ -57,7 +57,7 @@ dbservers:
 client-disaster:
   hosts:
     serverD3:
-      ansible_host: <IP>
+      ansible_host: 10.0.0.196
       ansible_user: vboxuser
       ansible_connection: winrm
       ansible_winrm_server_cert_validation: ignore
